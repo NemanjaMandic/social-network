@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+    before_action :authenticate_user!
     
     def new
         @user = User.new
@@ -26,6 +27,7 @@ class UsersController < ApplicationController
             redirect_to @user, alert: "Error following."
         end
     end
+    
     private
     def user_params
         params.require(:user).permit(:name, :email, :password, :password_confirmation)
