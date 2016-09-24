@@ -3,7 +3,7 @@
         <h3 class="panel-title"> <%= text_post.title %></h3>
     </div>
     <div class="panel-body">
-        <p><em>By <%= text_post.user.name %></em></p>
+        <p><em>By <%= link_to text_post.user.name, user_path(text_post) %></em></p>
         <p><em>Created at: <%= time_ago_in_words(text_post.created_at) %></em></p>
         <%= text_post.body %>
     </div>
