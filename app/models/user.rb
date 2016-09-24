@@ -19,6 +19,13 @@ class User < ActiveRecord::Base
     has_many :image_posts, dependent: :destroy
     has_many :comments, dependent: :destroy
     
+    def self.authenticate
+        username = params[:username]
+        password = params[:password]
+        
+        where(username: username, password: password).first
+    end
+    
     def following?(leader)
         leaders.include? leader
     end
