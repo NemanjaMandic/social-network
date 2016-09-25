@@ -14,7 +14,9 @@ class TextPostsController < ApplicationController
             render :new, alert: "Error creating post."
         end
     end
-    
+    def edit
+        @text_post = current_user.text_posts.find(params[:id])
+    end
     def update
          @text_post = current_user.text_posts.find(params[:id])
          if @text_post.update(text_post_params)
